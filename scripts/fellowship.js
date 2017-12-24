@@ -1,4 +1,4 @@
-console.log("the right file");
+console.log("the right file sdfsd");
 
 // Dramatis Personae
 let hobbits = [
@@ -25,21 +25,21 @@ let makeMiddleEarth = function () {
     let newSection = document.createElement('section');
     newSection.setAttribute('id', 'middle-earth');
 
-    console.log(newSection);
+    // console.log(newSection);
 
-    for(i=0; i < lands.length; i++){
+    for (i = 0; i < lands.length; i++) {
         // make article tags for each h1
-       let newArticle = document.createElement('article');
+        let newArticle = document.createElement('article');
         // make h1
-       let hOne = document.createElement('h1');
-       // put the text from land array into h1
+        let hOne = document.createElement('h1');
+        // put the text from land array into h1
         hOne.innerText = lands[i];
         // put h1 inside article tags
-       newArticle.appendChild(hOne);
+        newArticle.appendChild(hOne);
         // put the article inside one section created ealier
         newSection.appendChild(newArticle);
 
-        console.log(newArticle);
+        // console.log(newArticle);
     }
     // let shire = document.querySelector('h1')
     body.appendChild(newSection);
@@ -69,7 +69,6 @@ let makeHobbits = function () {
     let ulist = document.createElement('ul');
 
     for(i=0; i < hobbits.length; i++){
-
         // create li
         let list = document.createElement('li');
         // give each li tag a class of hobbit
@@ -131,7 +130,7 @@ let makeBuddies = function () {
     // put the ul in aside tag
     aside.appendChild(ul);
     //check if it came out right
-    console.log(aside)
+    // console.log(aside)
 
     //find rivendell
     let rivendale = document.querySelectorAll('article')[1];
@@ -153,15 +152,12 @@ beautifulStranger();
 
 let leaveTheShire = function () {
     // assemble the `hobbits` and move them to `rivendell`
-    // let hobbits = document.getElementsByClassName('hobbits');
-    // console.log(hobbits)
-
-    // let hobbits = document.querySelector('ul')[0];
-    // let rivendale = document.getElementsByTagName('article');
-    // rivendale[1].appendChild(hobbits)
-
+    //get hobbits
     let hobbits = document.getElementsByTagName("ul")[0];
+    // console.log(hobbits)
+    //get rivendale
     let rivendale = document.getElementsByTagName("article");
+    //move hobbits to rivendale
     rivendale[1].appendChild(hobbits);
 
 };
@@ -170,68 +166,130 @@ leaveTheShire();
 
 let forgeTheFellowShip = function () {
     // create a new div called `'the-fellowship'` within `rivendell`
-    let rivendale = document.getElementsByTagName('article')[1];
-    console.log(rivendale)
+    let rivendale = document.getElementsByTagName("article")[1];
+    // console.log(rivendale)
 
     let div = document.createElement('div')
     div.setAttribute('class', 'the-fellowship')
-    div.appendChild(rivendale)
-    // add each `hobbit` and `buddy` one at a time to `'the-fellowship'`
+    rivendale.appendChild(div)
+    // console.log(div)
+
+    // //grab hobbits
+    let hobbits = document.getElementsByTagName("ul")[1].querySelectorAll("li");
+    // console.log(hobbits)
+   
+    //grab buddies
+    let buddies = document.getElementsByTagName("ul")[0].querySelectorAll("li");
+    // console.log(buddies)
+  
+     // // add each `hobbit` and `buddy` one at a time to `'the-fellowship'`
     for(i=0; i <hobbits.length; i++){
-        div.appendChild(hobbits[i]);
-        // after each character is added make an alert that they // have joined your party
-        console.log(hobbits[i] + " has joined the party!")
+        div.appendChild(hobbits[i])
+         // after each character is added make an alert that they // have joined your party
+       // alert(hobbits[i].innerText + " has joined the fellowship")
     }
+    // // do same for buddies
     for(i=0; i <buddies.length; i++){
         div.appendChild(buddies[i]);
-        // after each character is added make an alert that they // have joined your party
-        console.log(buddies[i] + " has joined the party!")
+        // alert(buddies[i].innerText + " has joined the fellowship")
     }
-
-
 };
-// forgeTheFellowShip();
-
+forgeTheFellowShip();
 
 //8
 let theBalrog = function () {
     // change the `'Gandalf'` text to `'Gandalf the White'`
-    let gandolf = document.getElementByTagName('ul')[0];
-    gandolf.innerText = 'Gandalf the White';
-    gandolf.backgroundColor = 'white';
-    gandolf.borderColor = 'grey';
+    let gandolf = document.getElementsByTagName('li')[4];
+    // console.log(gandolf)
     // apply the following style to the element, make the // background 'white', add a grey border
+    gandolf.style.backgroundColor = "white"
+    gandolf.style.border = "2px solid grey"
 };
-// theBalrog()
+theBalrog()
 
 //9
 let hornOfGondor = function () {
     // pop up an alert that the horn of gondor has been blown
     alert("The horn of gondor has been blown");
-    // Boromir's been killed by the Uruk-hai!
     // Remove `Boromir` from the Fellowship
-    // let boromir = document.getElementsByTagName('ul')[4];
+    let boromir = document.getElementsByTagName('li')
+    // console.log(boromir)
+    boromir[8].remove()
 
-    li.removeChild(list.childNodes[4])
+    
 };
-// hornOfGondor();
+hornOfGondor();
 
 //10
 let itsDangerousToGoAlone = function (){
     // take `Frodo` and `Sam` out of the fellowship and move // them to `Mordor`
+    //get frodo
+    let frodo = document.getElementsByTagName('li')[0];
+    //get sam
+    let sam = document.getElementsByTagName('li')[1];
+    //get mordor
+    let mordor = document.getElementsByTagName('article')[2];
+    // put them in mordor
+    mordor.appendChild(frodo)
+    mordor.appendChild(sam)
     // add a div with an id of `'mount-doom'` to `Mordor`
+    let mountDoom = document.createElement('div')
+    mountDoom.setAttribute('id', 'mount-doom')
+    
+    mordor.appendChild(mountDoom)
 };
-
+itsDangerousToGoAlone();
 
 //11
 let weWantsIt = function () {
     // Create a div with an id of `'gollum'` and add it to Mordor
+    let gollum = document.createElement('div');
+    gollum.setAttribute('id', 'gollum')
+    
+    //get mordor and append gollum to it
+    let mordor = document.getElementsByTagName('article')[2]
+    mordor.appendChild(gollum)
     // Remove `the ring` from `Frodo` and give it to `Gollum`
+    //get the ring
+    let ring = document.getElementById('the-ring')
+    //give gollum the ring
+    gollum.appendChild(ring)
     // Move Gollum into Mount Doom
 };
+weWantsIt();
 
 //12
 let thereAndBackAgain = function () {
     // remove `Gollum` and `the Ring` from the document
-    // Move all the `hobbits` back to `the shire`
+    // get gollum
+    let gollum = document.getElementById('gollum')
+    //kill him
+    gollum.remove()
+
+    // // Move all the `hobbits` back to `the shire` 
+    //-not working probly bkus i seperated buddies and hobbits outside of their ul previously
+    //now i have to get each hobbit one by one
+    // let hobbits = document.getElementsByClassName('hobbits')
+    // console.log(hobbits)
+
+   
+    let allLi = document.querySelectorAll('li');
+    console.log(allLi)
+
+
+    // //get the shire
+    let shire = document.getElementsByTagName('article')[0]
+    console.log(shire)
+    //move them in the shire
+    shire.appendChild(allLi[0])
+    shire.appendChild(allLi[1])
+    shire.appendChild(allLi[6])
+    shire.appendChild(allLi[7])
 };
+thereAndBackAgain();
+
+
+
+
+
+
